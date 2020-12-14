@@ -1,0 +1,62 @@
+version: "2.0"
+nlu:
+- intent: greet
+  examples: |
+    - Hi
+    - Hey!
+    - Hallo
+    - Good day
+    - Good morning
+    - hi
+    - payed(2
+- intent: order
+  examples: |
+    - I would like to buy [an](quantity) [apple](commodity).
+    - [An](quantity) [apple](commodity), please.
+    - [An](quantity) [apple](commodity).
+    - I'm looking for [apples](commodity).
+    - I would like to buy [2](quantity) [apples](commodity).
+    - Give me [2](quantity) [apples](commoditiy) please
+    - Give me [15](quantity) [apples](commodity)
+    - [5](quantity)
+    - Give me [5](quantity)
+    - [5](quantity) please
+    - I would like to buy [apples](commodity)
+    - I would like to buy [5](quantity) [apples](commodity).
+    - I'd like to have [5](quantity) [bananas](commodity).
+    - [3](quantity) [cucumbers](commodity) please
+- intent: pay
+  examples: |
+    - Here you are.
+    - There you go.
+    - here you are
+- intent: confirm
+  examples: |
+    - Yes
+    - Yes please.
+    - sure
+    - yes
+- intent: reject
+  examples: |
+    - No.
+    - No thanks.
+    - no thanks
+- intent: goodbye
+  examples: |
+    - Bye.
+    - Have a nice day.
+    - Goodbye.
+    - Bye
+    - bye
+    - you too
+    - you too. bye.
+    - Goodbye!
+- regex: quantity
+  examples: |
+    - "[1-9]"
+- lookup: entities
+  examples: |
+    - apple
+    - pear
+    - cucumber
+    - lettuce

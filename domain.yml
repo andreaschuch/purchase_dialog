@@ -1,0 +1,73 @@
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- order
+- goodbye
+- reject
+- greet
+- confirm
+entities:
+- commodity
+- quantity
+slots:
+  commodity:
+    type: text
+    influence_conversation: false
+  currency:
+    type: text
+    initial_value: dollars
+    influence_conversation: true
+  price:
+    type: float
+    initial_value: 2
+    influence_conversation: true
+    max_value: 100
+    min_value: 0.0
+  quantity:
+    type: float
+    influence_conversation: true
+    max_value: 1000
+    min_value: 0.0
+  requested_slot:
+    type: text
+    influence_conversation: false
+responses:
+  utter_greet:
+  - text: Hello!
+  - text: Hi! How are you?
+  - text: Hi! How can I help you?
+  utter_ask_commodity:
+  - text: What are you looking for?
+  utter_ask_quantity:
+  - text: "\"How many?\"\n"
+  utter_price:
+  - text: "\"{price} {currency} please.\"\n"
+  - text: "\"That's {price} {currency}.\"\n"
+    buttons:
+    - title: Pay {price} {currency}
+      payload: payed({price})
+  utter_ask_bag:
+  - text: "\"Would you like a bag?\"\n"
+  - text: "\"Do you need a bag?\"\n"
+  - text: "\"Should I put it in a bag?\"\n"
+  utter_anything_else:
+  - text: "\"Anything else?\"\n"
+  utter_goodbye:
+  - text: "\"Thank you and have a nice day.\"\n"
+  - text: "\"Have a nice day.\"\n"
+actions:
+- '...'
+- utter_ask_bag
+- utter_goodbye
+- utter_greet
+- utter_price
+forms:
+  purchase_form:
+    commodity:
+    - type: from_entity
+      entity: commodity
+    quantity:
+    - type: from_entity
+      entity: quantity
+version: '2.0'

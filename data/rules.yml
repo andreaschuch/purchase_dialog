@@ -1,0 +1,7 @@
+rules:
+
+- rule: activate purchase form
+  steps:
+  - intent: order
+  - action: purchase_form
+  - active_loop: purchase_form
