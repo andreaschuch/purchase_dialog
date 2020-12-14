@@ -3,17 +3,18 @@ session_config:
   carry_over_slots_to_new_session: true
 intents:
 - order
+- confirm
+- greet
 - goodbye
 - reject
-- greet
-- confirm
+- pay
 entities:
 - commodity
 - quantity
 slots:
   commodity:
     type: text
-    influence_conversation: false
+    influence_conversation: true
   currency:
     type: text
     initial_value: dollars
@@ -26,7 +27,7 @@ slots:
     min_value: 0.0
   quantity:
     type: float
-    influence_conversation: true
+    influence_conversation: false
     max_value: 1000
     min_value: 0.0
   requested_slot:
@@ -41,6 +42,7 @@ responses:
   - text: What are you looking for?
   utter_ask_quantity:
   - text: "\"How many?\"\n"
+  - text: "\"How many {commodity} would you like?\"\n"
   utter_price:
   - text: "\"{price} {currency} please.\"\n"
   - text: "\"That's {price} {currency}.\"\n"
