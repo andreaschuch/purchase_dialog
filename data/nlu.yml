@@ -16,7 +16,7 @@ nlu:
     - [An](quantity) [apple](commodity).
     - I'm looking for [apples](commodity).
     - I would like to buy [2](quantity) [apples](commodity).
-    - Give me [2](quantity) [apples](commoditiy) please
+    - Give me [2](quantity) [apples](commodity) please
     - Give me [15](quantity) [apples](commodity)
     - [5](quantity)
     - Give me [5](quantity)
