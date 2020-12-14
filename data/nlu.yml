@@ -25,6 +25,7 @@ nlu:
     - I would like to buy [5](quantity) [apples](commodity).
     - I'd like to have [5](quantity) [bananas](commodity).
     - [3](quantity) [cucumbers](commodity) please
+    - [5](quantity) [apples](commodity)
 - intent: pay
   examples: |
     - Here you are.
@@ -51,6 +52,7 @@ nlu:
     - you too
     - you too. bye.
     - Goodbye!
+    - See you.
 - regex: quantity
   examples: |
     - "[1-9]"
