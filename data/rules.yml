@@ -1,7 +1,23 @@
 rules:
 
 - rule: activate purchase form
+  condition:
+  - active_loop: null
   steps:
   - intent: order
   - action: purchase_form
   - active_loop: purchase_form
+  wait_for_user_input: false
+
+- rule: pay
+  steps:
+  - intent: pay
+  - action: action_pay
+  wait_for_user_input: false
+
+#- rule: Say `hello` when the user starts a conversation with intent `greet`
+#  conversation_start: true
+#  steps:
+#  - intent: greet
+#  - action: utter_greet
+#  wait_for_user_input: false
