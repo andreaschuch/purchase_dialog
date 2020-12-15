@@ -1,2 +1,8 @@
+# Useful commands#
+```shell 
+rasa data validate
 rasa train
-rasa interactive
+rasa run actions
+rasa shell  --endpoints endpoints.yml
+rasa interactive  --endpoints endpoints.yml
+```
