@@ -3,11 +3,11 @@ session_config:
   carry_over_slots_to_new_session: true
 intents:
 - goodbye
-- confirm
 - order
 - reject
-- pay
 - greet
+- pay
+- confirm
 entities:
 - commodity
 - quantity
@@ -73,11 +73,11 @@ actions:
 - '...'
 - action_anything_else
 - action_pay
+- action_utter_price
 - utter_anything_else
 - utter_ask_bag
 - utter_goodbye
 - utter_greet
-- action_utter_price
 - utter_price
 forms:
   purchase_form:
