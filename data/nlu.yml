@@ -8,7 +8,7 @@ nlu:
     - Good day
     - Good morning
     - hi
-    - payed(2
+    - Hello.
 - intent: order
   examples: |
     - I would like to buy [an](quantity) [apple](commodity).
@@ -26,6 +26,8 @@ nlu:
     - I'd like to have [5](quantity) [bananas](commodity).
     - [3](quantity) [cucumbers](commodity) please
     - [5](quantity) [apples](commodity)
+    - I would like to buy some [apples](commodity), please.
+    - Just some [apples](commodity).
 - intent: pay
   examples: |
     - Here you are.
@@ -42,6 +44,7 @@ nlu:
     - No.
     - No thanks.
     - no thanks
+    - No, thanks. That's all.
 - intent: goodbye
   examples: |
     - Bye.
@@ -53,6 +56,7 @@ nlu:
     - you too. bye.
     - Goodbye!
     - See you.
+    - You, too.
 - regex: quantity
   examples: |
     - "[1-9]"
