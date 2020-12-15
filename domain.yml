@@ -2,16 +2,20 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- order
-- confirm
-- greet
 - goodbye
+- confirm
+- order
 - reject
 - pay
+- greet
 entities:
 - commodity
 - quantity
 slots:
+  all_commodities:
+    type: list
+    initial_value: []
+    influence_conversation: true
   commodity:
     type: text
     influence_conversation: true
@@ -45,24 +49,35 @@ responses:
   - text: "\"How many {commodity} would you like?\"\n"
   utter_price:
   - text: "\"{price} {currency} please.\"\n"
-  - text: "\"That's {price} {currency}.\"\n"
+  - text: "\"That's {price} {currency}, please.\"\n"
+  - text: "\"That'll be {price} {currency}, please.\"\n"
     buttons:
     - title: Pay {price} {currency}
-      payload: payed({price})
+      payload: pay
   utter_ask_bag:
   - text: "\"Would you like a bag?\"\n"
   - text: "\"Do you need a bag?\"\n"
   - text: "\"Should I put it in a bag?\"\n"
   utter_anything_else:
   - text: "\"Anything else?\"\n"
+  - text: "\"Would you like anything else?\"\n"
+  - text: "\"Do you need anything else today?\"\n"
+  utter_thanks:
+  - text: "\"Thanks!\"\n"
+  - text: "\"Thank you.\"\n"
+  - text: "\"Thank you very much.\"\n"
   utter_goodbye:
   - text: "\"Thank you and have a nice day.\"\n"
   - text: "\"Have a nice day.\"\n"
 actions:
 - '...'
+- action_anything_else
+- action_pay
+- utter_anything_else
 - utter_ask_bag
 - utter_goodbye
 - utter_greet
+- action_utter_price
 - utter_price
 forms:
   purchase_form:
