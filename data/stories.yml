@@ -1,29 +1,12 @@
 
 version: "2.0"
 stories:
-- story: interactive_story_1
+- story: story_1
   steps:
   - intent: order
     entities:
-    - quantity: '15'
+    - quantity: '5'
     - commodity: apples
-  - slot_was_set:
-    - commodity: apples
-  - slot_was_set:
-    - quantity: '15'
-  - action: purchase_form
-  - active_loop: purchase_form
-  - slot_was_set:
-    - commodity: apples
-  - slot_was_set:
-    - quantity: '15'
-  - slot_was_set:
-    - commodity: apples
-  - slot_was_set:
-    - quantity: '15'
-  - slot_was_set:
-    - requested_slot: null
-  - active_loop: null
   - action: action_anything_else
   - intent: reject
   - slot_was_set:
@@ -31,237 +14,188 @@ stories:
       - commodity: apples
         quantity: '5'
         price: 2
-  - intent: reject
   - action: action_utter_price
   - intent: pay
   - action: action_pay
-  - action: utter_ask_bag
-  - intent: confirm
-  - action: utter_goodbye
-  - intent: goodbye
   - action: action_restart
 
-- story: interactive_story_2
+- story: story_2
   steps:
   - intent: order
     entities:
     - commodity: apples
-  - slot_was_set:
+    - commodity: pears
+    - quantity: '2'
     - commodity: apples
-  - action: purchase_form
-  - active_loop: purchase_form
-  - slot_was_set:
-    - commodity: apples
-  - slot_was_set:
-    - commodity: apples
-  - slot_was_set:
-    - requested_slot: quantity
-  - slot_was_set:
-    - quantity: '5'
-  - slot_was_set:
-    - quantity: '5'
-  - slot_was_set:
-    - requested_slot: null
-  - active_loop: null
+    - quantity: '3'
+    - commodity: pears
   - action: action_anything_else
   - slot_was_set:
     - all_commodities:
       - commodity: apples
-        quantity: '5'
+        quantity: '2'
+        price: 2
+      - commodity: pears
+        quantity: '3'
         price: 2
   - intent: reject
   - action: action_utter_price
   - intent: pay
   - action: action_pay
-  - action: utter_ask_bag
-  - intent: confirm
-  - action: utter_goodbye
-  - intent: goodbye
   - action: action_restart
 
 - story: interactive_story_3
   steps:
   - intent: order
     entities:
-    - quantity: '5'
     - commodity: apples
-  - slot_was_set:
-    - commodity: apples
-  - slot_was_set:
-    - quantity: '5'
-  - action: purchase_form
-  - active_loop: purchase_form
-  - slot_was_set:
-    - commodity: apples
-  - slot_was_set:
-    - quantity: '5'
-  - slot_was_set:
-    - commodity: apples
-  - slot_was_set:
-    - quantity: '5'
-  - slot_was_set:
-    - requested_slot: null
-  - active_loop: null
+    - commodity: pears
+    - quantity: '2'
   - action: action_anything_else
   - slot_was_set:
     - all_commodities:
       - commodity: apples
-        quantity: '5'
+        quantity: '2'
         price: 2
+    - commodities_missing_quantities:
+      - apples
+  - intent: order
+    entities:
+    - quantity: '4'
+  - action: action_anything_else
+  - slot_was_set:
+    - all_commodities:
+      - commodity: apples
+        quantity: '2'
+        price: 2
+      - commodity: pears
+        quantity: '4'
+        price: 2
+    - commodities_missing_quantities: null
   - intent: reject
   - action: action_utter_price
   - intent: pay
   - action: action_pay
-  - action: utter_ask_bag
-  - intent: confirm
-  - action: utter_goodbye
-  - intent: goodbye
   - action: action_restart
-
-- story: interactive_story_4
+- story: interactive_story_1
   steps:
-  - intent: greet
-  - action: utter_greet
-  - action: purchase_form
-  - active_loop: purchase_form
-  - slot_was_set:
-    - requested_slot: commodity
-  - slot_was_set:
+  - intent: order
+    entities:
     - commodity: apples
-  - slot_was_set:
-    - quantity: '5'
-  - slot_was_set:
-    - quantity: '5'
-  - slot_was_set:
     - commodity: bananas
-  - slot_was_set:
-    - requested_slot: null
-  - active_loop: null
+    - quantity: '2'
+    - commodity: apples
+    - commodity: bananas
   - action: action_anything_else
   - slot_was_set:
     - all_commodities:
       - commodity: apples
-        quantity: '5'
+        quantity: '2'
         price: 2
-  - intent: reject
-  - action: action_utter_price
-  - intent: pay
-  - action: action_pay
-  - action: utter_ask_bag
-  - intent: reject
-  - action: utter_goodbye
-  - intent: goodbye
-  - action: action_restart
-
-- story: interactive_story_5
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - action: purchase_form
-  - active_loop: purchase_form
   - slot_was_set:
-    - requested_slot: commodity
-  - slot_was_set:
-    - commodity: cucumbers
-  - slot_was_set:
-    - quantity: '3'
-  - slot_was_set:
-    - quantity: '3'
-  - slot_was_set:
-    - commodity: cucumbers
-  - slot_was_set:
-    - requested_slot: null
-  - active_loop: null
+    - commodities_missing_quantities:
+      - bananas
+  - intent: order
+    entities:
+    - quantity: '7'
   - action: action_anything_else
   - slot_was_set:
     - all_commodities:
       - commodity: apples
-        quantity: '5'
+        quantity: '2'
         price: 2
+      - commodity: bananas
+        quantity: '7'
+        price: 2
+  - slot_was_set:
+    - commodities_missing_quantities: []
   - intent: reject
   - action: action_utter_price
   - intent: pay
   - action: action_pay
-  - action: utter_ask_bag
-  - intent: reject
-  - action: utter_goodbye
-  - intent: goodbye
   - action: action_restart
 
-- story: interactive_story_6
+- story: interactive_story_1
   steps:
-    - intent: order
-      entities:
-        - quantity: '4'
-        - commodity: apples
-    - slot_was_set:
-        - commodity: apples
-    - slot_was_set:
-        - quantity: '4'
-    - action: purchase_form
-    - active_loop: purchase_form
-    - slot_was_set:
-        - commodity: apples
-    - slot_was_set:
-        - quantity: '4'
-    - slot_was_set:
-        - commodity: apples
-    - slot_was_set:
-        - quantity: '4'
-    - slot_was_set:
-        - requested_slot: null
-    - active_loop: null
-    - action: action_anything_else
-    - slot_was_set:
-        - all_commodities:
-            - commodity: apples
-              quantity: '4'
-              price: 2
-    - slot_was_set:
-        - price: 2
-    - slot_was_set:
-        - commodity: null
-    - slot_was_set:
-        - quantity: null
-    - intent: confirm
-    - action: purchase_form
-    - active_loop: purchase_form
-    - slot_was_set:
-        - requested_slot: commodity
-    - slot_was_set:
-        - commodity: pears
-    - slot_was_set:
-        - quantity: '5'
-    - slot_was_set:
-        - quantity: '5'
-    - slot_was_set:
-        - commodity: pears
-    - slot_was_set:
-        - requested_slot: null
-    - active_loop: null
-    - action: action_anything_else
-    - slot_was_set:
-        - all_commodities:
-            - commodity: apples
-              quantity: '4'
-              price: 2
-            - commodity: pears
-              quantity: '5'
-              price: 2
-    - slot_was_set:
-        - price: 2
-    - slot_was_set:
-        - commodity: null
-    - slot_was_set:
-        - quantity: null
-    - intent: reject
-    - action: action_utter_price
-    - intent: pay
-    - action: action_pay
-    - action: utter_ask_bag
-    - or:
-        - intent: reject
-        - intent: confirm
-    - action: utter_goodbye
-    - intent: goodbye
-    - action: action_restart
+  - intent: order
+    entities:
+    - commodity: apples
+    - commodity: pears
+    - commodity: apples
+    - commodity: pears
+  - action: action_anything_else
+  - slot_was_set:
+    - all_commodities: []
+  - slot_was_set:
+    - commodities_missing_quantities:
+      - apples
+      - pears
+  - intent: order
+    entities:
+    - quantity: '8'
+  - action: action_anything_else
+  - slot_was_set:
+    - all_commodities:
+      - commodity: apples
+        quantity: '8'
+        price: 2
+  - slot_was_set:
+    - commodities_missing_quantities:
+      - pears
+  - intent: order
+    entities:
+    - quantity: '2'
+  - action: action_anything_else
+  - slot_was_set:
+    - all_commodities:
+      - commodity: apples
+        quantity: '8'
+        price: 2
+      - commodity: pears
+        quantity: '2'
+        price: 2
+  - slot_was_set:
+    - commodities_missing_quantities: []
+  - intent: reject
+  - action: action_utter_price
+  - intent: pay
+  - action: action_pay
+  - action: action_restart
+
+- story: interactive_story_1
+  steps:
+  - intent: order
+    entities:
+    - commodity: apples
+    - commodity: apples
+    - quantity: '2'
+    - commodity: pears
+    - commodity: pears
+  - action: action_anything_else
+  - slot_was_set:
+    - all_commodities:
+      - commodity: pears
+        quantity: '2'
+        price: 2
+  - slot_was_set:
+    - commodities_missing_quantities:
+      - apples
+  - intent: order
+    entities:
+    - quantity: '8'
+  - action: action_anything_else
+  - slot_was_set:
+    - all_commodities:
+      - commodity: pears
+        quantity: '2'
+        price: 2
+      - commodity: apples
+        quantity: '8'
+        price: 2
+  - slot_was_set:
+    - commodities_missing_quantities: []
+  - intent: reject
+  - action: action_utter_price
+  - intent: pay
+  - action: action_pay
+  - action: action_restart

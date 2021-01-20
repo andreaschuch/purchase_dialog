@@ -1,23 +1,53 @@
 rules:
 
-- rule: activate purchase form
-  condition:
-  - active_loop: null
+#- rule: activate purchase form
+#  condition:
+#  - active_loop: null
+#  steps:
+#  - intent: order
+#  - action: purchase_form
+#  - active_loop: purchase_form
+#  wait_for_user_input: false
+#
+#- rule: submit purchase
+#  condition:
+#  - active_loop: purchase_form
+#  steps:
+#  - action: purchase_form
+#  - active_loop: null
+#  wait_for_user_input: false
+
+- rule: anything else
   steps:
   - intent: order
-  - action: purchase_form
-  - active_loop: purchase_form
-  wait_for_user_input: false
+  - action: action_anything_else
+
+- rule: confirm
+  steps:
+  - intent: confirm
+  - action: action_anything_else
+
+- rule: reject
+  steps:
+  - intent: reject
+  - action: action_utter_price
 
 - rule: pay
   steps:
   - intent: pay
   - action: action_pay
-  wait_for_user_input: false
+  - action: action_restart
+
 
 #- rule: Say `hello` when the user starts a conversation with intent `greet`
 #  conversation_start: true
 #  steps:
 #  - intent: greet
 #  - action: utter_greet
+#  wait_for_user_input: false
+#
+#- rule: Say `goodbye` when the user says goodbye
+#  steps:
+#    - intent: goodbye
+#    - action: utter_goodbye
 #  wait_for_user_input: false

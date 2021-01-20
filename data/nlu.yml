@@ -11,23 +11,38 @@ nlu:
     - Hello.
 - intent: order
   examples: |
-    - I would like to buy [an](quantity) [apple](commodity).
-    - [An](quantity) [apple](commodity), please.
-    - [An](quantity) [apple](commodity).
-    - I'm looking for [apples](commodity).
-    - I would like to buy [2](quantity) [apples](commodity).
-    - Give me [2](quantity) [apples](commodity) please
-    - Give me [15](quantity) [apples](commodity)
-    - [5](quantity)
-    - Give me [5](quantity)
-    - [5](quantity) please
-    - I would like to buy [apples](commodity)
-    - I would like to buy [5](quantity) [apples](commodity).
-    - I'd like to have [5](quantity) [bananas](commodity).
-    - [3](quantity) [cucumbers](commodity) please
-    - [5](quantity) [apples](commodity)
-    - I would like to buy some [apples](commodity), please.
-    - Just some [apples](commodity).
+    - I would like to buy [an]{"entity": "quantity", "group": "1"} [apple]{"entity": "commodity", "group": "1"}.
+    - [An]{"entity": "quantity", "group": "1"} [apple]{"entity": "commodity", "group": "1"}, please.
+    - [An]{"entity": "quantity", "group": "1"} [apple]{"entity": "commodity", "group": "1"}.
+    - I'm looking for [apples]{"entity": "commodity", "group": "1"}.
+    - I would like to buy [2]{"entity": "quantity", "group": "1"} [apples]{"entity": "commodity", "group": "1"}.
+    - Give me [2]{"entity": "quantity", "group": "1"} [apples]{"entity": "commodity", "group": "1"} please
+    - Give me [15]{"entity": "quantity", "group": "1"} [apples]{"entity": "commodity", "group": "1"}
+    - [5]{"entity": "quantity", "group": "1"}
+    - Give me [5]{"entity": "quantity", "group": "1"}
+    - [5]{"entity": "quantity", "group": "1"} please
+    - I would like to buy [apples]{"entity": "commodity", "group": "1"}
+    - I would like to buy [5]{"entity": "quantity", "group": "1"} [apples]{"entity": "commodity", "group": "1"}.
+    - I'd like to have [5]{"entity": "quantity", "group": "1"} [bananas]{"entity": "commodity", "group": "1"}.
+    - [3]{"entity": "quantity", "group": "1"} [cucumbers]{"entity": "commodity", "group": "1"} please
+    - [5]{"entity": "quantity", "group": "1"} [apples]{"entity": "commodity", "group": "1"}
+    - I would like to buy some [apples]{"entity": "commodity", "group": "1"}, please.
+    - Just some [apples]{"entity": "commodity", "group": "1"}.
+    - [apples]{"entity": "commodity", "group": "1"} and [pears]{"entity": "commodity", "group": "2"}
+    - [2]{"entity": "quantity", "group": "1"} [apples]{"entity": "commodity", "group": "1"} and [3]{"entity": "quantity", "group": "2"} [pears]{"entity": "commodity", "group": "2"}
+    - [an]{"entity": "quantity", "group": "1"} [apple]{"entity": "commodity", "group": "1"} please
+    - [apples]{"entity": "commodity", "group": "1"} and [pears]{"entity": "commodity", "group": "2"} please
+    - [2]{"entity": "quantity", "group": "1"} [apples]{"entity": "commodity", "group": "1"} and [3]{"entity": "quantity", "group": "2"} [pears]{"entity": "commodity", "group": "2"} please
+    - I would like to buy [apples]{"entity": "commodity", "group": "1"} and [pears]{"entity": "commodity", "group": "2"}
+    - I would like to buy [2]{"entity": "quantity", "group": "1"} [apples]{"entity": "commodity", "group": "1"} and [3]{"entity": "quantity", "group": "2"} [pears]{"entity": "commodity", "group": "2"}
+    - [2]{"entity": "quantity", "group": "1"} [apples]{"entity": "commodity", "group": "1"} and some [bananas]{"entity": "commodity", "group": "2"}
+    - [apples]{"entity": "commodity", "group": "1"} and [bananas]{"entity": "commodity", "group": "2"}
+    - [7]{"entity": "quantity", "group": "1"}
+    - I would like to buy some [apples]{"entity": "commodity", "group": "1"} and some [pears]{"entity": "commodity", "group": "2"}
+    - [8]{"entity": "quantity", "group": "1"}
+    - [2]{"entity": "quantity", "group": "1"}
+    - some [apples]{"entity": "commodity", "group": "1", "value": "apples"} and [2] {"entity": "quantity", "group": "2", "value": "2"}{"entity": "commodity", "group": "2", "value": "pears"}
+    - [8]{"entity": "quantity", "group": "1"}
 - intent: pay
   examples: |
     - Here you are.
@@ -45,6 +60,7 @@ nlu:
     - No thanks.
     - no thanks
     - No, thanks. That's all.
+    - no
 - intent: goodbye
   examples: |
     - Bye.
@@ -60,9 +76,15 @@ nlu:
 - regex: quantity
   examples: |
     - "[1-9]"
-- lookup: entities
+- lookup: commodity
   examples: |
     - apple
     - pear
     - cucumber
     - lettuce
+    - banana
+    - apples
+    - pears
+    - cucumbers
+    - lettuces
+    - bananas

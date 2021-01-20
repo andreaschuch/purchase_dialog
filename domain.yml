@@ -1,12 +1,13 @@
+version: '2.0'
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- goodbye
-- order
-- reject
-- greet
 - pay
+- reject
+- order
+- goodbye
+- greet
 - confirm
 entities:
 - commodity
@@ -16,8 +17,9 @@ slots:
     type: list
     initial_value: []
     influence_conversation: true
-  commodity:
-    type: text
+  commodities_missing_quantities:
+    type: list
+    initial_value: []
     influence_conversation: true
   currency:
     type: text
@@ -28,11 +30,6 @@ slots:
     initial_value: 2
     influence_conversation: true
     max_value: 100
-    min_value: 0.0
-  quantity:
-    type: float
-    influence_conversation: false
-    max_value: 1000
     min_value: 0.0
   requested_slot:
     type: text
@@ -45,30 +42,46 @@ responses:
   utter_ask_commodity:
   - text: What are you looking for?
   utter_ask_quantity:
-  - text: "\"How many?\"\n"
-  - text: "\"How many {commodity} would you like?\"\n"
+  - text: |
+      "How many {commodity}?"
+  - text: |
+      "How many {commodity} would you like?"
   utter_price:
-  - text: "\"{price} {currency} please.\"\n"
-  - text: "\"That's {price} {currency}, please.\"\n"
-  - text: "\"That'll be {price} {currency}, please.\"\n"
+  - text: |
+      "{price} {currency} please."
+  - text: |
+      "That's {price} {currency}, please."
+  - text: |
+      "That'll be {price} {currency}, please."
     buttons:
     - title: Pay {price} {currency}
       payload: pay
   utter_ask_bag:
-  - text: "\"Would you like a bag?\"\n"
-  - text: "\"Do you need a bag?\"\n"
-  - text: "\"Should I put it in a bag?\"\n"
+  - text: |
+      "Would you like a bag?"
+  - text: |
+      "Do you need a bag?"
+  - text: |
+      "Should I put it in a bag?"
   utter_anything_else:
-  - text: "\"Anything else?\"\n"
-  - text: "\"Would you like anything else?\"\n"
-  - text: "\"Do you need anything else today?\"\n"
+  - text: |
+      "Anything else?"
+  - text: |
+      "Would you like anything else?"
+  - text: |
+      "Do you need anything else today?"
   utter_thanks:
-  - text: "\"Thanks!\"\n"
-  - text: "\"Thank you.\"\n"
-  - text: "\"Thank you very much.\"\n"
+  - text: |
+      "Thanks!"
+  - text: |
+      "Thank you."
+  - text: |
+      "Thank you very much."
   utter_goodbye:
-  - text: "\"Thank you and have a nice day.\"\n"
-  - text: "\"Have a nice day.\"\n"
+  - text: |
+      "Thank you and have a nice day."
+  - text: |
+      "Have a nice day."
 actions:
 - '...'
 - action_anything_else
@@ -79,12 +92,3 @@ actions:
 - utter_goodbye
 - utter_greet
 - utter_price
-forms:
-  purchase_form:
-    commodity:
-    - type: from_entity
-      entity: commodity
-    quantity:
-    - type: from_entity
-      entity: quantity
-version: '2.0'
