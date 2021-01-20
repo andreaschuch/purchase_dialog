@@ -41,8 +41,12 @@ nlu:
     - I would like to buy some [apples]{"entity": "commodity", "group": "1"} and some [pears]{"entity": "commodity", "group": "2"}
     - [8]{"entity": "quantity", "group": "1"}
     - [2]{"entity": "quantity", "group": "1"}
-    - some [apples]{"entity": "commodity", "group": "1", "value": "apples"} and [2] {"entity": "quantity", "group": "2", "value": "2"}{"entity": "commodity", "group": "2", "value": "pears"}
-    - [8]{"entity": "quantity", "group": "1"}
+    - some [apples]{"entity": "commodity", "group": "1"} and [2] {"entity": "quantity", "group": "2", "value": "2"}{"entity": "commodity", "group": "2", "value": "pears"}
+    - [2]{"entity": "quantity", "group": "1"} [apples]{"entity": "commodity", "group": "1"} and [3]{"entity": "quantity", "group": "2"} [pears]{"entity": "commodity", "group": "2"}
+    - [3]{"entity": "quantity", "group": "1"} [apples]{"entity": "commodity", "group": "1"} and [2]{"entity": "quantity", "group": "2"} [pears]{"entity": "commodity", "group": "2"}
+    - [2]{"entity": "quantity", "group": "1"} [pears]{"entity": "commodity", "group": "1"} and [3]{"entity": "quantity", "group": "2"} [apples]{"entity": "commodity", "group": "2"}
+    - [3]{"entity": "quantity", "group": "1"} [pears]{"entity": "commodity", "group": "1"} and [2]{"entity": "quantity", "group": "2"} [apples]{"entity": "commodity", "group": "2"}
+
 - intent: pay
   examples: |
     - Here you are.
