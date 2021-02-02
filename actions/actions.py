@@ -40,7 +40,7 @@ class ActionAnythingElse(Action):
             if commodity and quantity:
                 new_commodity = {"commodity": commodity, "quantity": quantity, "price": price}
                 if commodity in commodities_missing_quantities:
-                    commodities_missing_quantities.remove(commodity)
+                    commodities_missing_quantities = list(filter(lambda a: a != commodity and a!=commodity+"s", commodities_missing_quantities))
                 new_commodities.append(new_commodity)
             elif commodity:
                 commodities_missing_quantities.append(commodity)
