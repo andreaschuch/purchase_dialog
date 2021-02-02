@@ -7,7 +7,7 @@ rules:
 #  - intent: order
 #  - action: purchase_form
 #  - active_loop: purchase_form
-#  wait_for_user_input: false
+
 #
 #- rule: submit purchase
 #  condition:
@@ -16,11 +16,6 @@ rules:
 #  - action: purchase_form
 #  - active_loop: null
 #  wait_for_user_input: false
-
-- rule: anything else
-  steps:
-  - intent: order
-  - action: action_anything_else
 
 - rule: confirm
   steps:

@@ -8,11 +8,48 @@
 # # This is a simple example for a custom action which utters "Hello World!"
 #
 from random import choice
-from typing import Any, Text, Dict, List
+from typing import Any, Text, Dict, List, Optional
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.events import SlotSet
 from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.forms import FormValidationAction
+
+
+class ValidatePurchaseForm(FormValidationAction):
+    def name(self) -> Text:
+        return "validate_purchase_form"
+
+    async def extract_commodity(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+    ) -> Dict[Text, Any]:
+        return None
+
+    async def extract_entity(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+    ) -> Dict[Text, Any]:
+        return None
+
+    async def required_slots(
+        self,
+        slots_mapped_in_domain: List[Text],
+        dispatcher: "CollectingDispatcher",
+        tracker: "Tracker",
+        domain: "DomainDict",
+    ) -> Optional[List[Text]]:
+        print(slots_mapped_in_domain)
+        for group in range(10):
+            try:
+                commodity = next(tracker.get_latest_entity_values(entity_type="commodity", entity_group=str(group)))
+            except StopIteration:
+                commodity = None
+            try:
+                quantity = next(tracker.get_latest_entity_values(entity_type="quantity", entity_group=str(group)))
+            except StopIteration:
+                quantity = None
+
+        print("!!!!!!!!!!!!!!!! called required slots!!!!!!!!!!!!!!!!!!!!!!!!!")
+        return slots_mapped_in_domain
 
 
 class ActionAnythingElse(Action):
@@ -40,7 +77,7 @@ class ActionAnythingElse(Action):
             if commodity and quantity:
                 new_commodity = {"commodity": commodity, "quantity": quantity, "price": price}
                 if commodity in commodities_missing_quantities:
-                    commodities_missing_quantities.remove(commodity)
+                    commodities_missing_quantities = list(filter(lambda a: a != commodity and a!=commodity+"s", commodities_missing_quantities))
                 new_commodities.append(new_commodity)
             elif commodity:
                 commodities_missing_quantities.append(commodity)

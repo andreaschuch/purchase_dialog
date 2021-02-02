@@ -3,8 +3,8 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- pay
 - reject
+- pay
 - order
 - goodbye
 - greet
@@ -92,3 +92,14 @@ actions:
 - utter_goodbye
 - utter_greet
 - utter_price
+- validate_purchase_form
+forms:
+  purchase_form:
+    commodity:
+    - type: from_entity
+      entity: commodity
+    quantity:
+      - type: from_entity
+        entity: quantity
+
+
